@@ -268,4 +268,3 @@ Copyright 2014 to the end of time ([MIT License](https://github.com/asdf-vm/asdf
 
 Read the [ballad](https://github.com/asdf-vm/asdf/blob/master/ballad-of-asdf.md).
 
-<!-- foobar -->
