@@ -13,6 +13,11 @@ MANAGE PACKAGES
   asdf install <name> <version>        Install a specific version of a package or,
                                        with no arguments, install all the package
                                        versions listed in the .tool-versions file
+
+  asdf install <name> <version> --with-docs
+
+                                       Install a specific a version package's documentation, ie. man pages
+
   asdf uninstall <name> <version>      Remove a specific version of a package
   asdf current                         Display current version set or being used for all packages
   asdf current <name>                  Display current version set or being used for package

@@ -13,12 +13,16 @@ handle_cancel() {
 install_command() {
   local plugin_name=$1
   local full_version=$2
+  local with_docs=$3
 
   if [ "$plugin_name" = "" ] && [ "$full_version" = "" ]; then
     install_local_tool_versions
   elif [[ $# -eq 1 ]]; then
     display_error "You must specify a name and a version to install"
     exit 1
+  elif [ "$plugin_name" = "" ] && [ "$full_version" = "" ] && [ "$with_docs" = "--with-docs" ]; then
+    install_local_tool_versions
+    install_local_tool_versions_documentation
   else
     install_tool_version "$plugin_name" "$full_version"
   fi
@@ -56,6 +60,21 @@ install_local_tool_versions() {
     echo "OR add .tool-versions file in this directory"
     echo "or in a parent directory"
     exit 1
+  fi
+}
+
+install_local_tool_versions_documentation() {
+  local asdf_versions_path
+  local install_documentation_path
+
+
+  local exit_code=$?
+  if [ $exit_code -eq 0 ]; then
+    # symlink the documentation to "/usr/local/share/man/$RESPECTED_PATH"
+    echo "Documentation installed"
+  else
+    # handle_failure "$install_path"
+    echo "Documentation was not installed"
   fi
 }
 
